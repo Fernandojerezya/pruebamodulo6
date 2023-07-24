@@ -70,3 +70,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+# se agregan gemas necesarias para la app.
+gem 'devise'
+gem 'aws-sdk-s3', require: false
