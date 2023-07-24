@@ -1,14 +1,17 @@
+# config/routes.rb
 Rails.application.routes.draw do
-  get 'job_offers/index'
-  get 'job_offers/show'
-  get 'job_offers/new'
-  get 'job_offers/create'
-  get 'job_offers/edit'
-  get 'job_offers/update'
-  get 'job_offers/destroy'
-  devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  devise_for :admins
+  # Resto de tus rutas...
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :job_offers do
+    resources :applications, only: [:create, :index]
+  end
+
+  # Define las rutas de Devise con el controlador personalizado
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
+
+  # Ruta para la página de inicio (root)
+  root "job_offers#index"
 end
