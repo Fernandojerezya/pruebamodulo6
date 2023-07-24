@@ -1,5 +1,6 @@
 # config/routes.rb
 Rails.application.routes.draw do
+  get 'home/index'
   devise_for :admins
   # Resto de tus rutas...
 
@@ -19,5 +20,5 @@ Rails.application.routes.draw do
     patch 'users/:id/update_profile', to: 'users#update_profile', as: 'update_user_profile' # Ruta personalizada para actualizar perfil de usuario.
   end
   # Ruta para la página de inicio (root)
-  root "job_offers#index"
+  root 'home#index'
 end
